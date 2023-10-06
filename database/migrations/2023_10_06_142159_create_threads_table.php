@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('body', 2000);
+            $table->integer('fk_user_id');
             $table->timestamps();
         });
     }
