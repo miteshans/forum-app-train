@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('body', 2000);
-            $table->integer('fk_thread_id');
+            //$table->integer('fk_thread_id')->references('id')->on('users');
             $table->timestamps();
+
+            $table->foreignId('fk_thread_id')->references('id')->on('users');
         });
     }
 

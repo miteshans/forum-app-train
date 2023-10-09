@@ -19,6 +19,11 @@ class PostSeeder extends Seeder
             'fk_thread_id' => 1,
         ]);
 
+        \App\Models\Post::factory()->create([
+            'body' => 'post 2 body',
+            'fk_thread_id' => 2,
+        ]);
+
         //\App\Models\Post::factory(10)->create();
     }
 }
