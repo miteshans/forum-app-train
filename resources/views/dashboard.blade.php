@@ -8,6 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <b>
+                Thread is the initial topic, posts are left in a thread (think of it as comments) admins can lock the thread and prevent other users from leaving posts in the locked thread.
+                </b><br><br>
                 <b>REQ (Must)</b> <br>
                 - <strike>User Reg</strike> <br>
                 - User profile - private to the user, should show the amount of threads and posts they’ve created<br>

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        // Thread is the initial topic
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 100);
             $table->string('body', 2000);
             $table->timestamps();
-
+            
             // add FK to Users
             $table->foreignId('fk_user_id')->references('id')->on('users');
         });
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('threads');
     }
 };

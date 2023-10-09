@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('threads', function (Blueprint $table) {
+        // Posts are left in a thread
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
             $table->string('body', 2000);
             $table->timestamps();
 
-            // add FK to Posts
-            $table->foreignId('fk_post_id')->references('id')->on('posts');
+            // add FK to Threads
+            $table->foreignId('fk_thread_id')->references('id')->on('threads');
 
             // add FK to Users
             $table->foreignId('fk_user_id')->references('id')->on('users');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('threads');
+        Schema::dropIfExists('posts');
     }
 };

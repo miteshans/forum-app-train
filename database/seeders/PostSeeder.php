@@ -12,19 +12,22 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-         // seed some Posts 
-         \App\Models\Post::factory()->create([
-            'body' => 'post 1 body user 1',
+         // seed some Threads 
+        \App\Models\Post::factory()->create([
+            'body' => 'post 1 on thread 1 by user 1',
+            'fk_thread_id' => 1,
             'fk_user_id' => 1,
         ]);
 
         \App\Models\Post::factory()->create([
-            'body' => 'post 2 body user 1',
+            'body' => 'post 2 on thread 1 by user 1',
+            'fk_thread_id' => 1,
             'fk_user_id' => 1,
         ]);
 
         \App\Models\Post::factory()->create([
-            'body' => 'post 1 body',
+            'body' => 'post 3 on thread 2 by user 2',
+            'fk_thread_id' => 2,
             'fk_user_id' => 2,
         ]);
 
