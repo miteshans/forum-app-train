@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('body', 2000);
-            $table->integer('fk_user_id');
             $table->timestamps();
+
+            // add FK to Posts
+            $table->foreignId('fk_post_id')->references('id')->on('posts');
+
+            // add FK to Users
+            $table->foreignId('fk_user_id')->references('id')->on('users');
         });
     }
 

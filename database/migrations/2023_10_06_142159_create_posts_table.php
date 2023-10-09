@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('body', 2000);
             $table->timestamps();
 
-            // add FK for Posts against valid users
-            $table->foreignId('fk_thread_id')->references('id')->on('users');
+            // add FK to Users
+            $table->foreignId('fk_user_id')->references('id')->on('users');
         });
     }
 
