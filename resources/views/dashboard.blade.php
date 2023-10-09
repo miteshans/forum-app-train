@@ -12,10 +12,15 @@
                     {{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900">
-                    <a href="#">Create A Thread</a> | <a href="#">View Own Threads</a> | <a href="#">View All Threads</a>
+                    <a href="#">Create A Thread</a> | <a href="#"><i>Create A Post (on a given Threadd)</i></a>
                 </div>
+                <hr>
                 <div class="p-6 text-gray-900">
-                    <a href="#"><i>Create A Post (on a given Threadd)</i></a>
+                    <a href="#">View Own Threads</a> | <a href="#">View Own Posts (by threads)</a>
+                </div>
+                <hr>
+                <div class="p-6 text-gray-900">
+                    <a href="#">Delete Users</a> | <a href="#">Lock Threads</a>
                 </div>
             </div>
         </div>

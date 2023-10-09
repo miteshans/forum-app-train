@@ -20,5 +20,12 @@ class UserSeeder extends Seeder
             'password' => 'ans',
             'is_admin'=>true,
         ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Mits2',
+            'email' => 'mitesh2.chohan@gmail.com',
+            'password' => 'ans',
+            'is_admin'=>true,
+        ]);
     }
 }
