@@ -12,10 +12,13 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-         // seed some Posts
+         // seed some Posts 
+         // TODOD - NEEDS FK CONSTRAINT AT CODE LEVEL
          \App\Models\Post::factory()->create([
             'body' => 'post 1 body',
             'fk_thread_id' => 1,
         ]);
+
+        //\App\Models\Post::factory(10)->create();
     }
 }
