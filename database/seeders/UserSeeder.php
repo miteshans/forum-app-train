@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'Mits2',
-            'email' => 'mitesh2.chohan@gmail.com',
+            'email' => 'test@gmail.com',
             'password' => password_hash('ans',PASSWORD_DEFAULT),
             'is_admin'=>true,
         ]);

@@ -34,7 +34,7 @@
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
-                    <a href="#">View Own Threads</a> | <a href="#">View Own Posts (by threads)</a>
+                    <a href="/threadposts">View Own Threads</a> | <a href="/threadposts">View Own Posts (by threads)</a>
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
