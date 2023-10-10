@@ -18,14 +18,14 @@ class UserSeeder extends Seeder
          \App\Models\User::factory()->create([
             'name' => 'Mits',
             'email' => 'mitesh.chohan@gmail.com',
-            'password' => Hash('md5','ans'),
+            'password' => password_hash('ans',PASSWORD_DEFAULT),
             'is_admin'=>true,
         ]);
 
         \App\Models\User::factory()->create([
             'name' => 'Mits2',
             'email' => 'mitesh2.chohan@gmail.com',
-            'password' => Hash('md5','ans'),
+            'password' => password_hash('ans',PASSWORD_DEFAULT),
             'is_admin'=>true,
         ]);
     }
