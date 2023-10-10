@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThreadPostController;
+use App\Models\Thread;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $totThreads = Thread::where('fk_user_id',Auth::id())->count();
+    $totPosts = Post::where('fk_user_id',Auth::id())->count();
+    return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

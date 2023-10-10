@@ -15,9 +15,19 @@
         <div>
               <h2>All Threads by User</h2>
               {{$threads}}
-
+              <hr>
+              @foreach ($threads as $thread)
+                  <p><a href="#">{{ $thread->title }}</a></p>
+                  {{$thread->body}}
+                  <hr>
+              @endforeach
               <h2>All Posts by User</h2>
               {{$posts}}
+              <hr>
+              @foreach ($posts as $post)
+                  <a href="#">{{$post->body}}</a>
+                  <hr>
+              @endforeach
         </div>
     </body>
 </html>
