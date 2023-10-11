@@ -38,18 +38,15 @@ class ThreadController extends Controller
     public function view()
     {
         // Get threads for id=1 and assocated posts
-        $thread = Thread::find(1)->first();
-        $posts = $thread->posts;
-        //echo($thread);
+        $threadbyid = Thread::find(1)->first();
+        $posts = $threadbyid->posts;
 
         // get all threads
         $allthreads = Thread::with('posts')->get();
-        //echo($allthreads);
 
         // threads for this user
         $userThreads = Thread::with('posts')->where('userid',1)->get();
-        echo($userThreads);
 
-        return view('view-threads');
+        return view('view-threads',['userthreads'=>$userThreads]);
     }
 }
