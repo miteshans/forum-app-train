@@ -33,9 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // Threads/Posts
-    Route::get('/threadposts', [ThreadPostController::class, 'allThreadsPosts']);
 });
+
+Route::middleware('auth')->group(function () {
+    // A users total Threads & Posts
+    Route::get('/threadposts', [ThreadPostController::class, 'allThreadsPosts']);
+
+    // Add A Thread
+    Route::get('/addthread', [Thread::class, 'index']);
+});
+
 
 require __DIR__.'/auth.php';

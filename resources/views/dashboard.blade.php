@@ -30,7 +30,7 @@
                     {{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900">
-                    <a href="#">Create A Thread</a> | <a href="#"><i>Create A Post (on a given Threadd)</i></a>
+                    <a href="/addthread">Create A Thread</a> | <a href="#"><i>Create A Post (on a given Threadd)</i></a>
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">

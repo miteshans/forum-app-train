@@ -10,6 +10,11 @@ class Thread extends Model
 {
     use HasFactory;
 
+    public function index() 
+    {
+        return view('addthread');
+    }
+
     // Get the Posts for the Thread
     public function posts(): HasMany
     {
