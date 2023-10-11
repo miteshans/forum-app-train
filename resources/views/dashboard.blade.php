@@ -34,6 +34,7 @@
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
+                    <a href="/view-threads">View Threads</a> | 
                     <a href="/user-threads-posts">View Own Threads ({{ $totThreads }})</a> | <a href="/threadposts">View Own Posts ({{ $totPosts }})</a>
                 </div>
                 <hr>

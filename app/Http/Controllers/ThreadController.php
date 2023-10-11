@@ -6,6 +6,8 @@ use App\Models\Thread;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+
 
 class ThreadController extends Controller
 {
@@ -33,4 +35,13 @@ class ThreadController extends Controller
         return redirect('add-a-thread')->with('success','Thread saved successfully!');
     }
 
+    public function view()
+    {
+        $thread = Thread::find(1)->first();
+        $posts = $thread->posts;
+        echo($thread);
+        echo('<hr>');
+        //echo($posts);
+        return view('view-threads');
+    }
 }

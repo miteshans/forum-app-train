@@ -17,9 +17,6 @@ class ThreadPostController extends Controller
         // get threads by user
         $threads = Thread::where('userid',$uid)->get();
 
-        //$mPosts = Thread::find(1)->posts()->first();
-        //var_dump($mPosts);
-
         // get posts by user
         $posts = Post::where('userid', $uid)->get();
 

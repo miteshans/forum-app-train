@@ -12,10 +12,10 @@ class Thread extends Model
     use HasFactory;
 
     
-    // Get the Posts for the Thread
-    // public function posts(): HasMany
-    // {
-    //     return $this->hasMany(Post::class);
-    // }
+    // Get all Posts for a Thread
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
 

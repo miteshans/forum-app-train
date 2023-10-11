@@ -38,10 +38,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     // A users total Threads & Posts
-    Route::get('/user-threads-posts', [ThreadPostController::class, 'userThreadsPosts']);
+    //Route::get('/user-threads-posts', [ThreadPostController::class, 'userThreadsPosts']);
 
     Route::get('/add-a-thread', [ThreadController::class, 'index']);
     Route::post('/store-thread', [ThreadController::class, 'store']);
+    Route::get('/view-threads', [ThreadController::class, 'view']);
 });
 
 
