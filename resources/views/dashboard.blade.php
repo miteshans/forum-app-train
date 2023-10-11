@@ -13,9 +13,9 @@
                 </b><br><br>
                 <b>REQ (Must)</b> <br>
                 - <strike>User Reg</strike> <br>
-                - User profile - private to the user, should show the amount of threads and posts they’ve created<br>
-                - Ability to lock thread <br>
-                - Ability to delete users <br>
+                - <strike>User profile - private to the user, should show the amount of threads and posts they’ve created</strike><br>
+                - (admin) Ability to lock thread <br>
+                - (admin) Ability to delete users <br>
                 <hr><br>
                 <b>REQ Stats/Interaction (Should)</b><br>
                 - Ability to track views of each thread <br>
@@ -38,6 +38,7 @@
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
+                    <h3>Admin Area (if admin)</h3>
                     <a href="#">Delete Users</a> | <a href="#">Lock Threads</a>
                 </div>
             </div>
