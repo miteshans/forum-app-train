@@ -16,7 +16,6 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
-
         // validate input
         $validatedData = $request->validate([
             'thetitle' => 'required|max:100',
@@ -31,7 +30,7 @@ class ThreadController extends Controller
         $thread->userid = $uid;
         $thread->save();
 
-        return view('add-a-thread');
+        return redirect('add-a-thread')->with('success','Thread saved successfully!');
     }
 
 }
