@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ThreadPostController;
 use App\Models\Thread;
 use App\Models\Post;
@@ -39,8 +40,8 @@ Route::middleware('auth')->group(function () {
     // A users total Threads & Posts
     Route::get('/threadposts', [ThreadPostController::class, 'allThreadsPosts']);
 
-    // Add A Thread
-    Route::get('/addthread', [Thread::class, 'index']);
+    Route::get('/add-a-thread', [ThreadController::class, 'index']);
+    Route::post('/store-thread', [ThreadController::class, 'store']);
 });
 
 

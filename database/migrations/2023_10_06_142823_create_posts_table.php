@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamps();
 
             // add FK to Threads
-            $table->foreignId('fk_thread_id')->references('id')->on('threads');
+            $table->foreignId('thread_id')->references('id')->on('threads');
 
             // add FK to Users
-            $table->foreignId('fk_user_id')->references('id')->on('users');
+            $table->foreignId('userid')->references('id')->on('users');
         });
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
             
             // add FK to Users
-            $table->foreignId('fk_user_id')->references('id')->on('users');
+            $table->foreignId('userid')->references('id')->on('users');
         });
     }
 
