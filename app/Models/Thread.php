@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class Thread extends Model
 {
     use HasFactory;
-
     
     // Get all Posts for a Thread
     public function posts(): HasMany
