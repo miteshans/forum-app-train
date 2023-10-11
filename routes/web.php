@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThreadController;
-use App\Http\Controllers\ThreadPostController;
+use App\Http\Controllers\PostController;
 use App\Models\Thread;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -37,12 +37,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // A users total Threads & Posts
-    //Route::get('/user-threads-posts', [ThreadPostController::class, 'userThreadsPosts']);
-
+    
     Route::get('/add-a-thread', [ThreadController::class, 'index']);
     Route::post('/store-thread', [ThreadController::class, 'store']);
-    Route::get('/view-threads', [ThreadController::class, 'userthreads']);
+    Route::get('/user-threads', [ThreadController::class, 'userthreads']);
+    Route::get('/latest-threads', [ThreadController::class, 'latestthreads']);
+
+    Route::post('/store-post', [PostController::class, 'store']);
 });
 
 

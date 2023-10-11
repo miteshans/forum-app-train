@@ -35,7 +35,7 @@
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
-                    <a href="/view-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
+                    <a href="/user-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
                 </div>
                 <hr>
                 <hr>
