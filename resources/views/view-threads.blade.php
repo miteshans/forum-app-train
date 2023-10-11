@@ -28,7 +28,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            All Threads & Posts by User
+            My Threads
         </h2>
     </x-slot>
 
@@ -36,7 +36,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                <div class="forum-container">
-                @foreach ($userthreads as $thread)
+                @foreach ($threads as $thread)
                     <div class="thread">
                         <h2>{{ $thread['title'] }}</h2>
                         <p>{{ $thread['body'] }}</p>
@@ -54,10 +54,6 @@
                     <hr>
                 @endforeach
             </div>
-
-            </div>
-            
         </div>
-        
     </div>
 </x-app-layout>

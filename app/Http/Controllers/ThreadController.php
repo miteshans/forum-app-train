@@ -35,18 +35,16 @@ class ThreadController extends Controller
         return redirect('add-a-thread')->with('success','Thread saved successfully!');
     }
 
-    public function view()
+    public function userthreads()
     {
-        // Get threads for id=1 and assocated posts
-        $threadbyid = Thread::find(1)->first();
-        $posts = $threadbyid->posts;
+        $uid = Auth::id();
+        $threads = Thread::with('posts')->where('userid',$uid)->get();
+        return view('view-threads',['threads'=>$threads]);
+    }
 
+    public function latestthreads()
+    {
         // get all threads
-        $allthreads = Thread::with('posts')->get();
-
-        // threads for this user
-        $userThreads = Thread::with('posts')->where('userid',1)->get();
-
-        return view('view-threads',['userthreads'=>$userThreads]);
+        $threads = Thread::with('posts')->get();
     }
 }

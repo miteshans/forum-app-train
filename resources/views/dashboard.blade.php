@@ -26,17 +26,18 @@
                 - Add applicable unit tests to the functionality
                 <hr><br> -->
 
-                <div class="p-6 text-gray-900">
+                <!-- <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
-                </div>
+                </div> -->
+                <hr>
                 <div class="p-6 text-gray-900">
-                    <a href="/add-a-thread">Create A Thread</a> | <a href="#"><i>Create A Post (on a given Threadd)</i></a>
+                    <a href="/latest-threads">View Latest Threads</a>
                 </div>
                 <hr>
                 <div class="p-6 text-gray-900">
-                    <a href="/view-threads">View Threads</a> | 
-                    <a href="/user-threads-posts">View Own Threads ({{ $totThreads }})</a> | <a href="/threadposts">View Own Posts ({{ $totPosts }})</a>
+                    <a href="/view-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
                 </div>
+                <hr>
                 <hr>
                 <div class="p-6 text-gray-900">
                     <h3>Admin Area (if admin)</h3>
