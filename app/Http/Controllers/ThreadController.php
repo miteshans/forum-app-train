@@ -14,24 +14,24 @@ class ThreadController extends Controller
         return view('add-a-thread');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
 
         // validate input
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
-            'body' => 'required|max:2000',
+            'thetitle' => 'required|max:100',
+            'thebody' => 'required|max:2000',
         ]);
 
         $uid = Auth::id();
 
         $thread = new Thread();
-        $thread->title = $request->title;
-        $thread->body = $request->body;
+        $thread->title = $request->thetitle;
+        $thread->body = $request->thebody;
         $thread->userid = $uid;
         $thread->save();
 
-        return redirect('add-a-thread');
+        return view('add-a-thread');
     }
 
 }
