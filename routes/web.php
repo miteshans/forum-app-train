@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    $totThreads = Thread::where('fk_user_id',Auth::id())->count();
-    $totPosts = Post::where('fk_user_id',Auth::id())->count();
+    $totThreads = Thread::where('userid',Auth::id())->count();
+    $totPosts = Post::where('userid',Auth::id())->count();
     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     // A users total Threads & Posts
-    Route::get('/threadposts', [ThreadPostController::class, 'allThreadsPosts']);
+    Route::get('/user-threads-posts', [ThreadPostController::class, 'userThreadsPosts']);
 
     Route::get('/add-a-thread', [ThreadController::class, 'index']);
     Route::post('/store-thread', [ThreadController::class, 'store']);

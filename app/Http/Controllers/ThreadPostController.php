@@ -10,20 +10,20 @@ use App\Models\Post;
 class ThreadPostController extends Controller
 {
     // display All Threads & Posts by current user
-    public function allThreadsPosts() 
+    public function userThreadsPosts() 
     {
         $uid = Auth::id();
         
         // get threads by user
-        $threads = Thread::where('fk_user_id',$uid)->get();
+        $threads = Thread::where('userid',$uid)->get();
 
         //$mPosts = Thread::find(1)->posts()->first();
         //var_dump($mPosts);
 
         // get posts by user
-        $posts = Post::where('fk_user_id', $uid)->get();
+        $posts = Post::where('userid', $uid)->get();
 
-        return view ('threadposts', ['threads'=>$threads, 'posts'=>$posts]);
+        return view ('user-threads-posts', ['threads'=>$threads, 'posts'=>$posts]);
     }
 
     // Get all Threads and their corresponding Posts
