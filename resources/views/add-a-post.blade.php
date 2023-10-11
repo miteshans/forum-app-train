@@ -52,12 +52,28 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                <div class="forum-container">
                 @foreach ($threads as $thread)
-                    <a href="/add-a-post?tid={{ $thread['id'] }}">
                     <div class="thread">
                         <h2>{{ $thread['title'] }}</h2>
                         <p>{{ $thread['body'] }}</p>
+
+                        @if (isset($thread['posts']))
+                            @foreach ($thread['posts'] as $post)
+                                <div class="post">
+                                    <p>{{ $post['body'] }}</p>
+                                    <p class="post-meta">Created At: {{ $post['created_at'] }}</p>
+                                    <p class="post-meta">Updated At: {{ $post['updated_at'] }}</p>
+                                </div>
+                            @endforeach
+                        @endif
+
+                         <!-- Form for adding a new post -->
+                        <form action="/store-post" method="POST">
+                            @csrf
+                            <textarea name="newpost" rows="4" cols="50" placeholder="Add a new post to this Thread"></textarea><br>
+                            <button type="submit">Submit Post</button>
+                            <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
+                        </form>
                     </div>
-                    </a>
                     <hr>
                 @endforeach
             </div>

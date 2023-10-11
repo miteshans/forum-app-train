@@ -41,9 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-a-thread', [ThreadController::class, 'index']);
     Route::post('/store-thread', [ThreadController::class, 'store']);
     Route::get('/user-threads', [ThreadController::class, 'userthreads']);
+
     Route::get('/latest-threads', [ThreadController::class, 'latestthreads']);
 
+    Route::get('/add-a-post', [PostController::class, 'addpost']);
     Route::post('/store-post', [PostController::class, 'store']);
+
 });
 
 
