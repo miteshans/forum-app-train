@@ -54,7 +54,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/add-a-post', [PostController::class, 'addpost']);
     Route::post('/store-post', [PostController::class, 'store']);
-
 });
 
 // Route to Lock Threads

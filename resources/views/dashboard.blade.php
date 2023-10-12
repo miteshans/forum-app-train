@@ -38,11 +38,13 @@
                     <a href="/user-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
                 </div>
                 <hr>
-                <hr>
-                <div class="p-6 text-gray-900">
-                    <h3>Admin Area (if admin)</h3>
-                    <a href="#">Delete Users</a> | <a href="/lock-threads">Lock Threads</a>
-                </div>
+                @if(Auth::user()->is_admin)
+                    <hr>
+                    <div class="p-6 text-gray-900">
+                        <h3>Admin Area (if admin)</h3>
+                        <a href="#">Delete Users</a> | <a href="/lock-threads">Lock Threads</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

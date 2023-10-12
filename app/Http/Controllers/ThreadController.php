@@ -18,6 +18,10 @@ class ThreadController extends Controller
 
     public function lockthreads() 
     {
+        // get latest threads
+        $threads = Thread::with('posts')->get();
+        return view('latest-threads', ['threads'=>$threads]);
+
         return view('lock-threads');
     }
 
