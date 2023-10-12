@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('body', 2000);
             $table->timestamps();
             
+            // lock threads
+            $table->boolean('locked')->default(0);
             // add FK to Users
             $table->foreignId('userid')->references('id')->on('users');
         });
