@@ -56,9 +56,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-post', [PostController::class, 'store']);
 });
 
-// Route to Lock Threads
-Route::middleware('auth')->group(function() {
-    Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
+// // Route to Lock Threads
+// Route::middleware('auth')->group(function() {
+//     Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
+    
+// });
+
+// Route to Lock Threads using middleware groups
+Route::middleware('auth','checkadmin')->group(function() {
+    Route::get('/lock-threads', [ThreadController::class, 'lockthreads']);
+    
 });
 
 
