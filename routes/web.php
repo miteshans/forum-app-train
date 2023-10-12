@@ -9,7 +9,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Middleware\CheckAdmin;
+use App\Http\Middleware\IsAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
 // });
 
 // If Admin, you can lock threads and delete users
-Route::middleware('auth','checkadmin')->group(function() {
+Route::middleware('auth','isadmin')->group(function() {
     Route::get('/lock-threads', [ThreadController::class, 'lockthreads']);
     Route::get('/delete-user', [UserController::class, 'delete']);
 });

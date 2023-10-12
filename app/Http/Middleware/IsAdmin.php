@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Auth;
 
-class CheckAdmin
+class IsAdmin
 {
     /**
      * Handle an incoming request.
