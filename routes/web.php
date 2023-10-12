@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Thread;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -62,10 +63,10 @@ Route::middleware('auth')->group(function () {
     
 // });
 
-// Route to Lock Threads using middleware groups
+// If Admin, you can lock threads and delete users
 Route::middleware('auth','checkadmin')->group(function() {
     Route::get('/lock-threads', [ThreadController::class, 'lockthreads']);
-    
+    Route::get('/delete-user', [UserController::class, 'delete']);
 });
 
 

@@ -41,8 +41,8 @@
                 @if(Auth::user()->is_admin)
                     <hr>
                     <div class="p-6 text-gray-900">
-                        <h3>Admin Area (if admin)</h3>
-                        <a href="#">Delete Users</a> | <a href="/lock-threads">Lock Threads</a>
+                        <h3>Admin Area (You are seeing this because you are Admin)</h3>
+                        <a href="/delete-user">Delete Users</a> | <a href="/lock-threads">Lock Threads</a>
                     </div>
                 @endif
             </div>
