@@ -2,9 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+
+use Illuminate\Support\Facades\Auth;
 
 class CheckAdmin
 {
@@ -15,6 +18,13 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Check if User is Admin
+        $user = $request->user();
+        $is_admin = $user->is_admin;
+        if(!$is_admin)
+        {
+            return redirect('/dashboard');
+        }
         return $next($request);
     }
 }

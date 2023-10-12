@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'name' => 'Mits2',
             'email' => 'test@gmail.com',
             'password' => password_hash('ans',PASSWORD_DEFAULT),
-            'is_admin'=>true,
+            'is_admin'=>false,
         ]);
     }
 }
