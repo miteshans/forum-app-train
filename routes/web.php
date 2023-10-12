@@ -58,6 +58,9 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route to Lock Threads
-Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
+Route::middleware('auth')->group(function() {
+    Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
+});
+
 
 require __DIR__.'/auth.php';
