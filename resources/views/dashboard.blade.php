@@ -29,10 +29,10 @@
                 <!-- <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div> -->
-                <hr>
+                <!-- <hr>
                 <div class="p-6 text-gray-900">
                     <a href="/latest-threads">View Latest Threads</a>
-                </div>
+                </div> -->
                 <hr>
                 <div class="p-6 text-gray-900">
                     <a href="/user-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
