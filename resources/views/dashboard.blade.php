@@ -41,7 +41,7 @@
                 <hr>
                 <div class="p-6 text-gray-900">
                     <h3>Admin Area (if admin)</h3>
-                    <a href="#">Delete Users</a> | <a href="#">Lock Threads</a>
+                    <a href="#">Delete Users</a> | <a href="/lock-threads">Lock Threads</a>
                 </div>
             </div>
         </div>

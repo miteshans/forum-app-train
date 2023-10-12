@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Middleware\CheckAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,12 +24,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/dashboard', function () {
+
+//     $totThreads = Thread::where('userid',Auth::id())->count();
+//     $totPosts = Post::where('userid',Auth::id())->count();
+//     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
 
     $totThreads = Thread::where('userid',Auth::id())->count();
     $totPosts = Post::where('userid',Auth::id())->count();
     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
     
     Route::get('/add-a-thread', [ThreadController::class, 'index']);
     Route::post('/store-thread', [ThreadController::class, 'store']);
@@ -47,7 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-a-post', [PostController::class, 'addpost']);
     Route::post('/store-post', [PostController::class, 'store']);
 
-});
+//});
 
+// Route toLock Threads
+Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
 
 require __DIR__.'/auth.php';

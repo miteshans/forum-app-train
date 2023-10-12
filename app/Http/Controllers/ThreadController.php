@@ -16,6 +16,11 @@ class ThreadController extends Controller
         return view('add-a-thread');
     }
 
+    public function lockthreads() 
+    {
+        return view('lock-threads');
+    }
+
     public function store(Request $request)
     {
         // validate input
