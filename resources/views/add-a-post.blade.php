@@ -70,7 +70,11 @@
                         <form action="/store-post" method="POST">
                             @csrf
                             <textarea name="newpost" rows="4" cols="50" placeholder="Add a new post to this Thread"></textarea><br>
-                            <button type="submit">Submit Post</button>
+                            @if ($thread->locked == 1)
+                                <br>Sorry this Thread is locked from further commenting
+                            @else
+                                <br><button type="submit">Submit Post</button>
+                            @endif
                             <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
                         </form>
                     </div>
