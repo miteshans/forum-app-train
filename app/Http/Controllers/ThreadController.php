@@ -13,16 +13,33 @@ class ThreadController extends Controller
 {
     public function index() 
     {
-        return view('add-a-thread');
+        // get latest threads
+        $threads = Thread::with('posts')->get();        
+        return view('add-a-thread', ['threads'=>$threads]);
     }
 
     public function lockthreads() 
     {
         // get latest threads
         $threads = Thread::with('posts')->get();
-        return view('latest-threads', ['threads'=>$threads]);
+        return view('lock-threads', ['threads'=>$threads]);
+    }
 
-        return view('lock-threads');
+    public function lockthreadstore(Thread $thread)
+    {
+        // unlock/lock the given thread
+        if($thread->locked==1)
+        {
+            $thread->locked = 0;
+        }
+        else
+        {
+            $thread->locked = 1;
+        }
+        $thread->save();
+
+        $threads = Thread::with('posts')->get();
+        return view('lock-threads', ['threads'=>$threads]);
     }
 
     public function store(Request $request)
