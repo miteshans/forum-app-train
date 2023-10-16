@@ -11,18 +11,17 @@ use App\Models\Post;
 
 class ThreadController extends Controller
 {
+    // get latest threads
     public function index() 
     {
-        // get latest threads
         $threads = Thread::with('posts')->get();        
         return view('add-a-thread', ['threads'=>$threads]);
     }
 
     // view a given thread
-    public function view(Request $request) 
+    public function view(string $id) 
     {
-        $tid = $request->tid;
-        $thread = Thread::with('posts')->where('id',$tid)->get();
+        $thread = Thread::with('posts')->where('id',$id)->get();
         return view('view-thread', ['threads'=>$thread]);
     }
 
