@@ -52,9 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-threads', [ThreadController::class, 'userthreads']);
 
     Route::get('/latest-threads', [ThreadController::class, 'latestthreads']);
-
-    Route::get('/add-a-post', [PostController::class, 'addpost']);
-    Route::post('/store-post', [PostController::class, 'store']);
+    Route::get('/view-thread', [PostController::class, 'index']);
+    
+    Route::post('/store-post', [PostController::class, 'store']); 
 });
 
 // // Route to Lock Threads

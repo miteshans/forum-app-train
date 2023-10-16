@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('body', 2000);
+            $table->integer('views')->default(0);
             $table->timestamps();
             
             // lock threads

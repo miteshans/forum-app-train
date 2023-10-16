@@ -52,7 +52,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                <div class="forum-container">
                 @foreach ($threads as $thread)
-                    <a href="/add-a-post?tid={{ $thread['id'] }}">
+                    <a href="/view-thread?tid={{ $thread['id'] }}">
                     <div class="thread">
                         <h2>{{ $thread['title'] }}</h2>
                         <p>{{ $thread['body'] }}</p>

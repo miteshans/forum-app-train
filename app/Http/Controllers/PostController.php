@@ -8,12 +8,20 @@ use App\Models\Thread;
 
 class PostController extends Controller
 {
+    // // add a post against a given thread
+    // public function addpost(Request $request) 
+    // {
+    //     $tid = $request->tid;
+    //     $thread = Thread::with('posts')->where('id',$tid)->get();
+    //     return view('add-a-post', ['threads'=>$thread]);
+    // }
+
     // add a post against a given thread
-    public function addpost(Request $request) 
+    public function index(Request $request) 
     {
         $tid = $request->tid;
         $thread = Thread::with('posts')->where('id',$tid)->get();
-        return view('add-a-post', ['threads'=>$thread]);
+        return view('view-thread', ['threads'=>$thread]);
     }
 
     // store post against a thread
@@ -33,6 +41,6 @@ class PostController extends Controller
         $post->body = $request->newpost;
         $post->save();
 
-        return redirect('add-a-post?tid='. $tid)->with('success','Post saved successfully!');
+        return redirect('view-thread?tid='. $tid)->with('success','Post saved successfully!');
     }
 }
