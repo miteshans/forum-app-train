@@ -18,6 +18,14 @@ class ThreadController extends Controller
         return view('add-a-thread', ['threads'=>$threads]);
     }
 
+    // view a given thread
+    public function view(Request $request) 
+    {
+        $tid = $request->tid;
+        $thread = Thread::with('posts')->where('id',$tid)->get();
+        return view('view-thread', ['threads'=>$thread]);
+    }
+
     public function lockthreads() 
     {
         // get latest threads

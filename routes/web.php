@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-threads', [ThreadController::class, 'userthreads']);
 
     Route::get('/latest-threads', [ThreadController::class, 'latestthreads']);
-    Route::get('/view-thread', [PostController::class, 'index']);
+    Route::get('/view-thread', [ThreadController::class, 'view']);
     
     Route::post('/store-post', [PostController::class, 'store']); 
 });
