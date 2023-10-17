@@ -54,7 +54,8 @@
                 
                     <div class="thread">
                         <h2>{{ $threads->title }}</h2>
-                        <p>{{ $threads->body }}</p>
+                        <p>{{ $threads->body }}</p><br>
+                        <small>(Total Views: {{ $threads->viewcount }})</small> 
 
                         @if (isset($threads['posts']))
                             @foreach ($threads['posts'] as $post)

@@ -34,7 +34,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        @if(session('success'))
+            @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
@@ -54,8 +54,8 @@
                 @foreach ($threads as $thread)
                     <a href="/view-thread/{{ $thread['id'] }}">
                     <div class="thread">
-                        <h2>{{ $thread['title'] }}</h2>
-                        <p>{{ $thread['body'] }}</p>
+                        <h2>{{ $thread['title'] }}</h2><br>
+                        <small>(Total Views: {{ $thread->viewcount }})</small> 
                     </div>
                     </a>
                     <hr>
