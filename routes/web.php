@@ -32,12 +32,6 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/dashboard', function () {
-
-//     $totThreads = Thread::where('userid',Auth::id())->count();
-//     $totPosts = Post::where('userid',Auth::id())->count();
-//     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
-// })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -56,12 +50,6 @@ Route::middleware('auth')->group(function () {
     
     Route::post('/store-post', [PostController::class, 'store']); 
 });
-
-// // Route to Lock Threads
-// Route::middleware('auth')->group(function() {
-//     Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->middleware(CheckAdmin::class);
-    
-// });
 
 // If Admin, you can lock threads and delete users
 Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {

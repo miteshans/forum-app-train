@@ -51,13 +51,13 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                <div class="forum-container">
-                @foreach ($threads as $thread)
+                
                     <div class="thread">
-                        <h2>{{ $thread['title'] }}</h2>
-                        <p>{{ $thread['body'] }}</p>
+                        <h2>{{ $threads->title }}</h2>
+                        <p>{{ $threads->body }}</p>
 
-                        @if (isset($thread['posts']))
-                            @foreach ($thread['posts'] as $post)
+                        @if (isset($threads['posts']))
+                            @foreach ($threads['posts'] as $post)
                                 <div class="post">
                                     <p>{{ $post['body'] }}</p>
                                     <p class="post-meta">Created At: {{ $post['created_at'] }}</p>
@@ -66,20 +66,21 @@
                             @endforeach
                         @endif
 
-                         <!-- Form for adding a new post -->
+                        <!-- Form for adding a new post -->
+                        <!-- <form action="/store-post" method="POST"> -->
                         <form action="/store-post" method="POST">
                             @csrf
                             <textarea name="newpost" rows="4" cols="50" placeholder="Add a new post to this Thread"></textarea><br>
-                            @if ($thread->locked == 1)
+                            @if ($threads->locked == 1)
                                 <br>Sorry this Thread is locked from further commenting
                             @else
                                 <br><button type="submit">Submit Post</button>
                             @endif
-                            <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
+                            <input type="hidden" name="threadid" value="{{ $threads['id'] }}">
                         </form>
                     </div>
                     <hr>
-                @endforeach
+
             </div>
         </div>
     </div>

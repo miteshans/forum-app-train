@@ -11,17 +11,25 @@ use App\Models\Post;
 
 class ThreadController extends Controller
 {
+    // ### TODO : FIX CODE TYPO - NO NEED PULLBACK POSTS, THERE ARE NONE!
     // get latest threads
     public function index() 
     {
         $threads = Thread::with('posts')->get();        
         return view('add-a-thread', ['threads'=>$threads]);
     }
+    // ### END TODO
 
     // view a given thread
     public function view(string $id) 
     {
-        $thread = Thread::with('posts')->where('id',$id)->get();
+        $thread = Thread::with('posts')->where('id',$id)->first();
+        //echo $thread;
+
+        // Add +1 to views count
+        $thread->viewcount = $thread->viewcount +1; 
+        $thread->save();
+        
         return view('view-thread', ['threads'=>$thread]);
     }
 
@@ -65,7 +73,7 @@ class ThreadController extends Controller
         $thread->userid = $uid;
         $thread->save();
 
-        return redirect('add-a-thread')->with('success','Thread saved successfully!');
+        return redirect('view-thread')->with('success','Thread saved successfully!');
     }
 
     public function userthreads()
