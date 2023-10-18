@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Likes are stored on Threads by users
         Schema::create('threadlikes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            // add FK to Threads
-            $table->foreignId('thread_id')->references('id')->on('threads');
+             // add FK to Threads
+             $table->foreignId('thread_id')->references('id')->on('threads');
 
-            // add FK to Users
-            $table->foreignId('user_id')->references('id')->on('users');
+             // add FK to Users
+             $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 
