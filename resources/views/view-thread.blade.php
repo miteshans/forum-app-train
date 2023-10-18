@@ -53,12 +53,17 @@
                <div class="forum-container">
                 
                     <div class="thread">
-                        <h2>{{ $threads->title }}</h2>
-                        <p>{{ $threads->body }}</p><br>
-                        <small>(Total Views: {{ $threads->viewcount }})</small> 
-
-                        @if (isset($threads['posts']))
-                            @foreach ($threads['posts'] as $post)
+                        <h2>{{ $thread->title }}</h2>
+                        <p>{{ $thread->body }}</p><br>
+                        <hr>
+                        
+                        <form method="POST" action="{{ route('likethread', [$thread['id']]) }}">
+                            @csrf
+                            <button type="submit"><small>Like This Thread</small></button> 
+                        </form>
+                        <small>(likes: {{ $thread->likes->count() }} | views: {{ $thread->viewcount }})</small>
+                        @if (isset($thread['posts']))
+                            @foreach ($thread['posts'] as $post)
                                 <div class="post">
                                     <p>{{ $post['body'] }}</p>
                                     <p class="post-meta">Created At: {{ $post['created_at'] }}</p>
@@ -68,16 +73,15 @@
                         @endif
 
                         <!-- Form for adding a new post -->
-                        <!-- <form action="/store-post" method="POST"> -->
                         <form action="/store-post" method="POST">
                             @csrf
                             <textarea name="newpost" rows="4" cols="50" placeholder="Add a new post to this Thread"></textarea><br>
-                            @if ($threads->locked == 1)
+                            @if ($thread->locked == 1)
                                 <br>Sorry this Thread is locked from further commenting
                             @else
                                 <br><button type="submit">Submit Post</button>
                             @endif
-                            <input type="hidden" name="threadid" value="{{ $threads['id'] }}">
+                            <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
                         </form>
                     </div>
                     <hr>

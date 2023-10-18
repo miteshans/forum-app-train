@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
-
+use App\Models\Threadlike;
 
 class ThreadController extends Controller
 {
@@ -23,14 +23,13 @@ class ThreadController extends Controller
     // view a given thread
     public function view(string $id) 
     {
-        $thread = Thread::with('posts')->where('id',$id)->first();
-        //echo $thread;
+        $thread = Thread::with('posts')->with('likes')->where('id',$id)->first();
 
         // Add +1 to views count
         $thread->viewcount = $thread->viewcount +1; 
         $thread->save();
         
-        return view('view-thread', ['threads'=>$thread]);
+        return view('view-thread', ['thread'=>$thread]);
     }
 
     public function lockthreads() 
@@ -88,5 +87,20 @@ class ThreadController extends Controller
         // get latest threads
         $threads = Thread::with('posts')->get();
         return view('latest-threads', ['threads'=>$threads]);
+    }
+
+    public function likethread(string $threadid)
+    {
+        $uid = Auth::id();
+        
+        // Insert INTO ThreadLikes table, threadid, userid
+        $threadlike = new Threadlike();
+        $threadlike->thread_id = $threadid;
+        $threadlike->user_id = $uid;
+        $threadlike->save();
+
+        // display given thread
+        $thread = Thread::with('posts')->with('likes')->where('id',$threadid)->first();
+        return view('view-thread', ['thread'=>$thread]);
     }
 }

@@ -18,11 +18,16 @@ class LikeSeeder extends Seeder
             'user_id' => '1',
         ]);
 
+        \App\Models\Threadlike::factory()->create([
+            'thread_id' => '1',
+            'user_id' => '2',
+        ]);
+
         // Seed some post likes
-        \App\Models\PostLike::factory()->create([
-            'post_id' => '1',
-            'user_id' => '1',
-        ]);        
+        // \App\Models\PostLike::factory()->create([
+        //     'post_id' => '1',
+        //     'user_id' => '1',
+        // ]);        
     
         //\App\Models\Threadlike::factory(10)->create();
     }

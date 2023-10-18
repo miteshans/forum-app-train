@@ -16,5 +16,11 @@ class Thread extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    // Get all users who have Liked a Thread
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Threadlike::class);    
+    }
 }
 
