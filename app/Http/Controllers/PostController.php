@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Postlike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Thread;
@@ -26,5 +27,24 @@ class PostController extends Controller
             $post->save();
 
             return redirect('view-thread/'.$tid)->with('success','Post saved successfully!');
+        }
+
+        public function likepost(string $postid,string $threadid)
+        {
+            // ### TO DO: Can't Like More than once by same user, Switch to UNLike if already Liked  ###
+            // Code here
+            // Will Be a Delete from the Model
+            // ###
+
+            $uid = Auth::id();
+
+            $postlike = new Postlike();
+            $postlike->post_id = $postid;
+            $postlike->user_id = $uid;
+            $postlike->save();
+
+            // display given thread
+            $thread = Thread::with('posts')->with('likes')->where('id',$threadid)->first();
+            return view('view-thread', ['thread'=>$thread]);
         }
 }

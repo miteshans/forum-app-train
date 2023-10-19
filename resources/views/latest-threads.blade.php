@@ -55,7 +55,6 @@
                     <a href="/view-thread/{{ $thread['id'] }}">
                     <div class="thread">
                         <h2>{{ $thread['title'] }}</h2><br>
-                        <small>(Total Views: {{ $thread->viewcount }})</small> 
                     </div>
                     </a>
                     <hr>

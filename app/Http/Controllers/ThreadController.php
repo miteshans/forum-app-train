@@ -91,9 +91,13 @@ class ThreadController extends Controller
 
     public function likethread(string $threadid)
     {
+        // ### TO DO: Can't Like More than once by same user, Switch to UNLike if already Liked  ###
+        // Code here
+        // Will Be a Delete from the Model
+        // ###
+
         $uid = Auth::id();
-        
-        // Insert INTO ThreadLikes table, threadid, userid
+
         $threadlike = new Threadlike();
         $threadlike->thread_id = $threadid;
         $threadlike->user_id = $uid;

@@ -56,18 +56,24 @@
                         <h2>{{ $thread->title }}</h2>
                         <p>{{ $thread->body }}</p><br>
                         <hr>
-                        
                         <form method="POST" action="{{ route('likethread', [$thread['id']]) }}">
                             @csrf
                             <button type="submit"><small>Like This Thread</small></button> 
                         </form>
                         <small>(likes: {{ $thread->likes->count() }} | views: {{ $thread->viewcount }})</small>
+                        
                         @if (isset($thread['posts']))
                             @foreach ($thread['posts'] as $post)
                                 <div class="post">
                                     <p>{{ $post['body'] }}</p>
                                     <p class="post-meta">Created At: {{ $post['created_at'] }}</p>
                                     <p class="post-meta">Updated At: {{ $post['updated_at'] }}</p>
+                                    <br><hr>
+                                    <form method="POST" action="{{ route('likepost', [ $post['id'],$thread['id'] ]) }}">
+                                        @csrf
+                                        <button type="submit"><small>Like This Post</small></button> 
+                                    </form>
+                                    {{ $post }}
                                 </div>
                             @endforeach
                         @endif

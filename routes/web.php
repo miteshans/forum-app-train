@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/view-thread/{id}', [ThreadController::class, 'view']);
     
     Route::post('/store-post', [PostController::class, 'store']); 
+    Route::post('/like-post/{pid}/{tid}', [PostController::class, 'likepost'])->name('likepost');
 });
 
 // If Admin, you can lock threads and delete users
