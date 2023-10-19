@@ -14,24 +14,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public static function activeusers()
-    {
-        // Get users who have posted in the current month
-        $currentMonthStart = Carbon::now()->startOfMonth();
-        $currentMonthEnd = Carbon::now()->endOfMonth();
-
-        $activeUsers = User::whereHas('posts', function ($query) use ($currentMonthStart, $currentMonthEnd) {
-            $query->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd]);
-        })->get();
-
-        return $activeUsers;
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'userid');
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -62,4 +44,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Users have many Posts
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'userid');
+    }
+
+    // Get users who have posted in threads in the current month
+    public static function activeusers()
+    {
+        $currentMonthStart = Carbon::now()->startOfMonth();
+        $currentMonthEnd = Carbon::now()->endOfMonth();
+
+        $activeUsers = User::whereHas('posts', function ($query) use ($currentMonthStart, $currentMonthEnd) {
+            $query->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd]);
+        })->get();
+
+        return $activeUsers;
+    }
 }
