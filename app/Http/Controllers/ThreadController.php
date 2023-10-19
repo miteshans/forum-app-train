@@ -23,8 +23,16 @@ class ThreadController extends Controller
     // view a given thread
     public function view(string $id) 
     {
-        $thread = Thread::with('posts')->with('likes')->where('id',$id)->first();
+        //$thread = Thread::with('posts')->with('likes')->where('id',$id)->first();
 
+        // get Posts with likes too
+        $thread = Thread::with('posts.likes')->with('likes')->where('id',$id)->first();
+
+        // get Posts with likes to version 2?
+        //$thread = Thread::with('posts.likes')->where('id',$id)->first();
+
+        //echo $thread;
+        //dd();
         // Add +1 to views count
         $thread->viewcount = $thread->viewcount +1; 
         $thread->save();

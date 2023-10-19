@@ -60,7 +60,7 @@
                             @csrf
                             <button type="submit"><small>Like This Thread</small></button> 
                         </form>
-                        <small>(likes: {{ $thread->likes->count() }} | views: {{ $thread->viewcount }})</small>
+                        <small>(thread likes: {{ $thread->likes->count() }} | views: {{ $thread->viewcount }})</small>
                         
                         @if (isset($thread['posts']))
                             @foreach ($thread['posts'] as $post)
@@ -73,7 +73,7 @@
                                         @csrf
                                         <button type="submit"><small>Like This Post</small></button> 
                                     </form>
-                                    {{ $post }}
+                                    <small>(post likes: {{ $post->likes->count(); }})</small>
                                 </div>
                             @endforeach
                         @endif
