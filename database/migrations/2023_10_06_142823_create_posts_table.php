@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('thread_id')->references('id')->on('threads');
 
             // add FK to Users
+            // TODO: change to user_id and fix all references
             $table->foreignId('userid')->references('id')->on('users');
         });
     }

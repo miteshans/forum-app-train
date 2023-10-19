@@ -25,11 +25,8 @@ class ThreadController extends Controller
     {
         //$thread = Thread::with('posts')->with('likes')->where('id',$id)->first();
 
-        // get Posts with likes too
-        $thread = Thread::with('posts.likes')->with('likes')->where('id',$id)->first();
-
-        // get Posts with likes to version 2?
-        //$thread = Thread::with('posts.likes')->where('id',$id)->first();
+        // get Posts with likes as well
+        $thread = Thread::with('posts.likes')->where('id',$id)->first();
 
         //echo $thread;
         //dd();

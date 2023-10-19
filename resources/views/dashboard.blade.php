@@ -13,6 +13,17 @@
                     <a href="/user-threads">My Threads</a> | <a href="/add-a-thread">Create A Thread</a>
                 </div>
                 <hr>
+
+                <div class="p-6 text-gray-900">
+                    <h2>Active Users This Month</h2>
+                    <ul>
+                        @foreach ($activeusers as $user)
+                            <li>{{ $user->name }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <hr>
                 @if(Auth::user()->is_admin)
                     <hr>
                     <div class="p-6 text-gray-900">

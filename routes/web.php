@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Models\Thread;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,9 +28,11 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
+    $activeusers = User::activeusers();
+
     $totThreads = Thread::where('userid',Auth::id())->count();
     $totPosts = Post::where('userid',Auth::id())->count();
-    return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts ]);
+    return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts, 'activeusers'=>$activeusers ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

@@ -8,9 +8,29 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Carbon\Carbon;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public static function activeusers()
+    {
+        // Get users who have posted in the current month
+        $currentMonthStart = Carbon::now()->startOfMonth();
+        $currentMonthEnd = Carbon::now()->endOfMonth();
+
+        $activeUsers = User::whereHas('posts', function ($query) use ($currentMonthStart, $currentMonthEnd) {
+            $query->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd]);
+        })->get();
+
+        return $activeUsers;
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'userid');
+    }
 
     /**
      * The attributes that are mass assignable.
