@@ -26,27 +26,44 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="forum-container">
-                    @foreach ($threads as $thread)
-                        <div class="thread">
-                            <div class="thread-header">
-                                <h2>{{ $thread['title'] }}</h2>
-                                <!-- Lock Thread button for each thread -->
-                                <form action="{{ route('lockthreadstore', [$thread]) }}" method="POST">
-                                    @csrf
-                                    @if ($thread->locked == 1)
-                                        <button type="submit">UNLOCK</button>
-                                    @else
-                                        <button type="submit">Lock Thread</button>
-                                    @endif
-                                  
-                                </form>
-                            </div>
-                        </div>
-                        <hr>
-                    @endforeach
+
+            <div class="px-4 sm:px-6 lg:px-8">
+                <div class="mt-8 flow-root">
+                    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <table class="min-w-full divide-y divide-gray-300">
+                        <thead>
+                            <tr>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Thread</th>
+                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                            </tr>
+                        </thead>
+
+                        @foreach ($threads as $thread)
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $thread['title'] }}</td>
+                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                                    <form action="{{ route('lockthreadstore', [$thread]) }}" method="POST">
+                                        @csrf
+                                        @if ($thread->locked == 1)
+                                            <button type="submit">UNLOCK</button>
+                                        @else
+                                            <button type="submit">Lock Thread</button>
+                                        @endif
+                                    </form>
+                                </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+                        </table>
+                    </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </x-app-layout>
