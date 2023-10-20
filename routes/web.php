@@ -58,10 +58,10 @@ Route::middleware('auth')->group(function () {
 
 // If Admin, you can lock threads and delete users
 Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {
-    Route::get('/lock-threads', [ThreadController::class, 'lockthreads']);
+    Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->name('lock-threads');
     Route::post('/lock-thread-store/{thread}', [ThreadController::class, 'lockthreadstore'])->name('lockthreadstore');
 
-    Route::get('/user-list', [UserController::class, 'view']);
+    Route::get('/user-list', [UserController::class, 'view'])->name('user-list');
     Route::post('/user-delete', [UserController::class, 'delete'])->name('userdelete');
 
 });

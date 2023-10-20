@@ -23,7 +23,7 @@
                     <x-nav-link :href="route('user-threads')" :active="request()->routeIs('user-threads')">
                         {{ __('My Threads') }}
                     </x-nav-link>
-                    
+
                     <x-nav-link :href="route('latest-threads')" :active="request()->routeIs('latest-threads')">
                         {{ __('Latest Threads') }}
                     </x-nav-link>
@@ -50,6 +50,16 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        @if(Auth::user()->is_admin)
+                            <x-dropdown-link :href="route('user-list')">
+                                {{ __('Delete Users') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('lock-threads')">
+                                {{ __('Lock Threads') }}
+                            </x-dropdown-link>
+                        @endif
+                        
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
