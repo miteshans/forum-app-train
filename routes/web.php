@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     
-    Route::get('/add-a-thread', [ThreadController::class, 'index']);
-    Route::get('/user-threads', [ThreadController::class, 'userthreads']);
+    Route::get('/add-a-thread', [ThreadController::class, 'index'])->name('add-a-thread');
+    Route::get('/user-threads', [ThreadController::class, 'userthreads'])->name('user-threads');
 
     Route::post('/store-thread', [ThreadController::class, 'store']);
     Route::post('/like-thread/{id}', [ThreadController::class, 'likethread'])->name('likethread');

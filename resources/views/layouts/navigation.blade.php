@@ -16,6 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('add-a-thread')" :active="request()->routeIs('add-a-thread')">
+                        {{ __('Create A Thread') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('user-threads')" :active="request()->routeIs('user-threads')">
+                        {{ __('My Threads') }}
+                    </x-nav-link>
+                    
                     <x-nav-link :href="route('latest-threads')" :active="request()->routeIs('latest-threads')">
                         {{ __('Latest Threads') }}
                     </x-nav-link>
