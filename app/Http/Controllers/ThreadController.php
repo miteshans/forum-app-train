@@ -77,7 +77,7 @@ class ThreadController extends Controller
         $thread->userid = $uid;
         $thread->save();
 
-        return redirect('view-thread')->with('success','Thread saved successfully!');
+        return redirect('add-a-thread')->with('success','Thread saved successfully!');
     }
 
     public function userthreads()
