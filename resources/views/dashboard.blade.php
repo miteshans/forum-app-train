@@ -15,7 +15,7 @@
                 <hr>
 
                 <div class="p-6 text-gray-900">
-                    <h2>Active Users This Month</h2>
+                    <h2>Top 10 Active Users This Month</h2>
                     <ul>
                         @foreach ($activeusers as $user)
                             <li>{{ $user->name }}</li>
@@ -28,7 +28,7 @@
                     <hr>
                     <div class="p-6 text-gray-900">
                         <h3>Admin Area (You are seeing this because you are Admin)</h3>
-                        <a href="admin/delete-user">Delete Users</a> | <a href="admin/lock-threads">Lock Threads</a>
+                        <a href="admin/user-list">Delete Users</a> | <a href="admin/lock-threads">Lock Threads</a>
                     </div>
                 @endif
             </div>

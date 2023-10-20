@@ -59,7 +59,7 @@ class User extends Authenticatable
 
         $activeUsers = User::whereHas('posts', function ($query) use ($currentMonthStart, $currentMonthEnd) {
             $query->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd]);
-        })->get();
+        })->take(10)->get();
 
         return $activeUsers;
     }

@@ -61,7 +61,9 @@ Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {
     Route::get('/lock-threads', [ThreadController::class, 'lockthreads']);
     Route::post('/lock-thread-store/{thread}', [ThreadController::class, 'lockthreadstore'])->name('lockthreadstore');
 
-    Route::get('/delete-user', [UserController::class, 'delete']);
+    Route::get('/user-list', [UserController::class, 'view']);
+
+
 });
 
 
