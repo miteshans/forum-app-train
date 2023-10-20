@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-thread', [ThreadController::class, 'store']);
     Route::post('/like-thread/{id}', [ThreadController::class, 'likethread'])->name('likethread');
 
-    Route::get('/latest-threads', [ThreadController::class, 'latestthreads']);
+    Route::get('/latest-threads', [ThreadController::class, 'latestthreads'])->name('latest-threads');
     Route::get('/view-thread/{id}', [ThreadController::class, 'view']);
     
     Route::post('/store-post', [PostController::class, 'store']); 

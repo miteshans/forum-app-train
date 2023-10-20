@@ -16,7 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <a href="/latest-threads">Latest Threads</a>
+                    <x-nav-link :href="route('latest-threads')" :active="request()->routeIs('latest-threads')">
+                        {{ __('Latest Threads') }}
+                    </x-nav-link>
                 </div>
             </div>
 
