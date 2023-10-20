@@ -1,29 +1,3 @@
-<style>
-    .forum-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.thread {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-.post {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-.post-meta {
-    font-size: 0.9rem;
-    color: #666;
-}
-</style>
 
 <x-app-layout>
     <x-slot name="header">
@@ -42,10 +16,26 @@
             <form action="{{ route('userdelete') }}" method="POST">
             @csrf
             @foreach ($users as $user)
-                <input type="checkbox" name="selected_users[]" value="{{ $user->id }}">
-                {{ $user->name }}<br>
+                <fieldset>
+                    <legend class="sr-only">Notifications</legend>
+                    <div class="space-y-5">
+                        <div class="relative flex items-start">
+                        <div class="flex h-6 items-center">
+                            <input id="selected_users[]" value="{{ $user->id }}" aria-describedby="comments-description" name="selected_users[]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                        </div>
+                        <div class="ml-3 text-sm leading-6">
+                            <label for="comments" class="font-medium text-gray-900"> {{ $user->name }}</label>
+                        </div>
+                        </div>
+                    </div>
+                </fieldset>
             @endforeach
-            <button type="submit">Delete Selected Users</button>
+            <br>
+            <button type="submit" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Delete Selected Users
+            </button>
+
+            
         </form>
         </div>
     </div>
