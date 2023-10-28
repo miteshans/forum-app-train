@@ -13,14 +13,16 @@ class LikeSeeder extends Seeder
     public function run(): void
     {
         // Seed some thread likes
-        \App\Models\Threadlike::factory()->create([
-            'thread_id' => '1',
+        \App\Models\Like::factory()->create([
+            'likeable_id' => '1',
+            'likeable_type' => 'thread',
             'user_id' => '1',
         ]);
 
-        \App\Models\Threadlike::factory()->create([
-            'thread_id' => '1',
-            'user_id' => '2',
+        \App\Models\Like::factory()->create([
+            'likeable_id' => '1',
+            'likeable_type' => 'post',
+            'user_id' => '1',
         ]);
 
         // Seed some post likes
