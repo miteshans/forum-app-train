@@ -99,7 +99,7 @@ class ThreadController extends Controller
 
         $like = new Like();
         $like->likeable_id = $threadid;
-        $like->likeable_type = 'App\Models\Thread';
+        $like->likeable_type = Thread::class;
         $like->user_id = $uid;
         $like->save();
 

@@ -16,4 +16,12 @@ class Post extends Model
     // {
     //     return $this->hasMany(Postlike::class);    
     // }
+
+    /**
+     * Get all of the posts's likes.
+     */
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
 }
