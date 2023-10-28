@@ -1,5 +1,5 @@
 <style>
-    .forum-container {
+    /* .forum-container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -22,7 +22,7 @@
 .post-meta {
     font-size: 0.9rem;
     color: #666;
-}
+} */
 
 </style>
 <x-app-layout>
@@ -37,21 +37,22 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                <div class="forum-container">
                 @foreach ($threads as $thread)
-                    <div class="thread">
-                        <h2>{{ $thread['title'] }}</h2>
-                        <p>{{ $thread['body'] }}</p>
-
-                        @if (isset($thread['posts']))
-                            @foreach ($thread['posts'] as $post)
-                                <div class="post">
-                                    <p>{{ $post['body'] }}</p>
-                                    <p class="post-meta">Created At: {{ $post['created_at'] }}</p>
-                                    <p class="post-meta">Updated At: {{ $post['updated_at'] }}</p>
+                    <ul role="list" class="divide-y divide-gray-500">
+                        <li class="flex justify-between gap-x-6 py-5">
+                            <div class="flex min-w-0 gap-x-4">
+                                <div class="h-12 w-12 flex-none"></div>
+                                <div class="min-w-0 flex-auto">
+                                    <p class="text-sm font-semibold leading-6 text-gray-900"><a href="/view-thread/{{ $thread['id'] }}">{{ $thread['title'] }}</a></p>
+                                    <p class="mt-1  text-xs leading-5 text-gray-500">{{ $thread['body'] }}</p>
                                 </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    <hr>
+                            </div>
+                            <div class="hidden shrink-0 sm:flex sm:flex-col" style="margin-right: 100px;">
+                                <p class="text-sm leading-6 text-gray-900">Likes: {{ $thread->likes->count() }} | Views: {{ $thread->viewcount }}</p>
+                                <p class="mt-1 text-xs leading-5 text-gray-500">posted {{ $thread['created_at'] }}</p>
+                                <p>{{ Carbon\Carbon::createFromTimestamp($thread['created_at'])->format('d-m-Y') }}</p>
+                            </div>
+                        </li>
+                    </ul>
                 @endforeach
             </div>
         </div>
