@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\PostController;
@@ -47,13 +48,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-threads', [ThreadController::class, 'userthreads'])->name('user-threads');
 
     Route::post('/store-thread', [ThreadController::class, 'store']);
-    Route::post('/like-thread/{id}', [ThreadController::class, 'likethread'])->name('likethread');
+    Route::post('/like-thread/{id}', [LikeController::class, 'likethread'])->name('likethread');
 
     Route::get('/latest-threads', [ThreadController::class, 'latestthreads'])->name('latest-threads');
     Route::get('/view-thread/{id}', [ThreadController::class, 'view']);
     
     Route::post('/store-post', [PostController::class, 'store']); 
-    Route::post('/like-post/{pid}/{tid}', [PostController::class, 'likepost'])->name('likepost');
+    Route::post('/like-post/{pid}/{tid}', [LikeController::class, 'likepost'])->name('likepost');
 });
 
 // If Admin, you can lock threads and delete users

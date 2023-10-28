@@ -92,19 +92,4 @@ class ThreadController extends Controller
         $threads = Thread::with('posts')->get();
         return view('latest-threads', ['threads'=>$threads]);
     }
-
-    public function likethread(string $threadid)
-    {
-        $uid = Auth::id();
-
-        $like = new Like();
-        $like->likeable_id = $threadid;
-        $like->likeable_type = Thread::class;
-        $like->user_id = $uid;
-        $like->save();
-
-        // display given thread
-        $thread = Thread::with('posts')->with('likes')->where('id',$threadid)->first();
-        return view('view-thread', ['thread'=>$thread]);
-    }
 }
