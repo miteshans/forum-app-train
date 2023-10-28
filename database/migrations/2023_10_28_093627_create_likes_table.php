@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             
-            //$table->integer('likeable_id')->nullable(); // id of thread or post
-            //$table->string('likeable_type')->nullable(); //thread or post
+            //likeable_id: id of thread or post
+            //likeable_type: thread or post
             $table->morphs('likeable');
 
             // FK to Users

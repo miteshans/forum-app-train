@@ -32,17 +32,7 @@ class PostController extends Controller
 
         public function likepost(string $postid,string $threadid)
         {
-            // ### TO DO: Can't Like More than once by same user, Switch to UNLike if already Liked  ###
-            // Code here
-            // Will Be a Delete from the Model
-            // ###
-
             $uid = Auth::id();
-
-            // $postlike = new Postlike();
-            // $postlike->post_id = $postid;
-            // $postlike->user_id = $uid;
-            // $postlike->save();
 
             $like = new Like();
             $like->likeable_id = $postid;

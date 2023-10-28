@@ -11,12 +11,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    // Get all users who have Liked a Post
-    // public function likes(): HasMany
-    // {
-    //     return $this->hasMany(Postlike::class);    
-    // }
-
     /**
      * Get all of the posts's likes.
      */
