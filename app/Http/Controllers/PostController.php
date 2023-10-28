@@ -6,6 +6,7 @@ use App\Models\Postlike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Thread;
+use App\Models\Like;
 
 class PostController extends Controller
 {
@@ -38,10 +39,16 @@ class PostController extends Controller
 
             $uid = Auth::id();
 
-            $postlike = new Postlike();
-            $postlike->post_id = $postid;
-            $postlike->user_id = $uid;
-            $postlike->save();
+            // $postlike = new Postlike();
+            // $postlike->post_id = $postid;
+            // $postlike->user_id = $uid;
+            // $postlike->save();
+
+            $like = new Like();
+            $like->likeable_id = $postid;
+            $like->likeable_type = Post::class;
+            $like->user_id = $uid;
+            $like->save();
 
             // display given thread
             $thread = Thread::with('posts')->with('likes')->where('id',$threadid)->first();

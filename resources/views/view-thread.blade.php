@@ -73,7 +73,7 @@
                                         @csrf
                                         <button type="submit"><small>Like This Post</small></button> 
                                     </form>
-                                    <small>(post likes: )</small>
+                                    <small>(post likes: {{ $post->likes->count(); }})</small>
                                 </div>
                             @endforeach
                         @endif
