@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Thread extends Model
 {
@@ -17,10 +18,12 @@ class Thread extends Model
         return $this->hasMany(Post::class);
     }
 
-    // Get all users who have Liked a Thread
-    public function likes(): HasMany
+    /**
+     * Get all of the thread's likes.
+     */
+    public function likes()
     {
-        return $this->hasMany(Threadlike::class);    
+        return $this->morphMany(Like::class, 'likeable');
     }
 }
 

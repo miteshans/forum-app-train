@@ -15,15 +15,16 @@ class LikeSeeder extends Seeder
         // Seed some thread likes
         \App\Models\Like::factory()->create([
             'likeable_id' => '1',
-            'likeable_type' => 'thread',
+            'likeable_type' => 'App\Models\Thread',
             'user_id' => '1',
         ]);
 
         \App\Models\Like::factory()->create([
             'likeable_id' => '1',
-            'likeable_type' => 'post',
-            'user_id' => '1',
+            'likeable_type' => 'App\Models\Thread',
+            'user_id' => '2',
         ]);
+        
 
         // Seed some post likes
         // \App\Models\PostLike::factory()->create([

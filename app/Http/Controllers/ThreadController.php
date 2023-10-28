@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Threadlike;
 
+use App\Models\Like;
+use Illuminate\Support\Facades\DB;
+
+
 class ThreadController extends Controller
 {
     // ### TODO : FIX CODE TYPO - NO NEED PULLBACK POSTS, THERE ARE NONE!
@@ -23,13 +27,8 @@ class ThreadController extends Controller
     // view a given thread
     public function view(string $id) 
     {
-        //$thread = Thread::with('posts')->with('likes')->where('id',$id)->first();
+        $thread = Thread::find($id); 
 
-        // get Posts with likes as well
-        $thread = Thread::with('posts.likes')->where('id',$id)->first();
-
-        //echo $thread;
-        //dd();
         // Add +1 to views count
         $thread->viewcount = $thread->viewcount +1; 
         $thread->save();
@@ -96,17 +95,13 @@ class ThreadController extends Controller
 
     public function likethread(string $threadid)
     {
-        // ### TO DO: Can't Like More than once by same user, Switch to UNLike if already Liked  ###
-        // Code here
-        // Will Be a Delete from the Model
-        // ###
-
         $uid = Auth::id();
 
-        $threadlike = new Threadlike();
-        $threadlike->thread_id = $threadid;
-        $threadlike->user_id = $uid;
-        $threadlike->save();
+        $like = new Like();
+        $like->likeable_id = $threadid;
+        $like->likeable_type = 'App\Models\Thread';
+        $like->user_id = $uid;
+        $like->save();
 
         // display given thread
         $thread = Thread::with('posts')->with('likes')->where('id',$threadid)->first();

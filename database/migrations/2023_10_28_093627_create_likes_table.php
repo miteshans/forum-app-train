@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('likeable_id')->nullable(); // id of thread or like
-            $table->string('likeable_type')->nullable(); //thread or like
+            
+            //$table->integer('likeable_id')->nullable(); // id of thread or post
+            //$table->string('likeable_type')->nullable(); //thread or post
+            $table->morphs('likeable');
 
             // FK to Users
             $table->foreignId('user_id')->references('id')->on('users');
