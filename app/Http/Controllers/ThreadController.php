@@ -90,10 +90,6 @@ class ThreadController extends Controller
     {
         // get latest threads
         $threads = Thread::with('posts')->get();
-        
-        // $t = Thread::find(1);
-        // echo $t->user->name;
-        // dd();
         return view('latest-threads', ['threads'=>$threads]);
     }
 }

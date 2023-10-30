@@ -18,4 +18,12 @@ class Post extends Model
     {
         return $this->morphMany(Like::class, 'likeable');
     }
+
+    /*
+    * A Post belongs to a Thread
+    */
+    public function Thread(): BelongsTo
+    {
+        return $this->belongsTo(Thread::class);   
+    }
 }
