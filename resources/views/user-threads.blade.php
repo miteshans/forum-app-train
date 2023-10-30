@@ -34,26 +34,44 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-               <div class="forum-container">
-                @foreach ($threads as $thread)
-                    <ul role="list" class="divide-y divide-gray-500">
-                        <li class="flex justify-between gap-x-6 py-5">
-                            <div class="flex min-w-0 gap-x-4">
-                                <div class="h-12 w-12 flex-none"></div>
-                                <div class="min-w-0 flex-auto">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900"><a href="/view-thread/{{ $thread['id'] }}">{{ $thread['title'] }}</a></p>
-                                    <p class="mt-1  text-xs leading-5 text-gray-500">{{ $thread['body'] }}</p>
-                                </div>
-                            </div>
-                            <div class="hidden shrink-0 sm:flex sm:flex-col" style="margin-right: 100px;">
-                                <p class="text-sm leading-6 text-gray-900">Likes: {{ $thread->likes->count() }} | Views: {{ $thread->viewcount }}</p>
-                                <p class="mt-1 text-xs leading-5 text-gray-500">posted {{ $thread['created_at'] }}</p>
-                            </div>
-                        </li>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
-                @endforeach
+                </div>
+            @endif
+
+            <div class="max-w-3xl mx-auto bg-white p-4 rounded-md shadow-md">
+                
+                <!-- Thread List -->
+                <ul class="space-y-4">
+                    @foreach ($threads as $thread)
+                        <!-- Thread -->
+                        <li class="bg-gray-200 p-4 rounded-md">
+                            <div class="text-xl font-bold">{{ $thread->title }}</div>
+                            @if ($thread->user)
+                                <p class="text-gray-500">Posted by {{ $thread->user->name }} on {{ $thread['created_at'] }}</p>
+                            @else
+                                <p class="text-gray-500">Posted by [user deleted] on {{ $thread['created_at'] }}</p>
+                            @endif
+                            <p class="text-gray-700 mt-2">{{ $thread['body'] }}</p>
+                            <div class="mt-2">
+                                <span class="text-blue-600">{{ $thread->likes->count() }} Likes</span>
+                                <span class="text-gray-600 ml-2">{{ $thread->viewcount }} Views</span>
+                                <span class="text-green-600 ml-2">{{ $thread->posts->count() }} Replies</span>
+                            </div>
+                            <a href="/view-thread/{{ $thread['id'] }}" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 inline-block">View Thread</a>
+                        </li>
+                    @endforeach
+                </ul>
+                </div>
             </div>
-        </div>
-    </div>
 </x-app-layout>

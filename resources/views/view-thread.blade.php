@@ -62,7 +62,11 @@
                                         <span class="ml-2 text-gray-600">{{ $post->likes->count(); }}&nbsp;Likes</span>
                                     </div>
                                 </div>
-                                <p class="text-gray-400 text-sm">Posted on {{ $post['created_at'] }}</p>
+                                @if ($post->user)
+                                    <p class="text-gray-400 text-sm">Posted by {{ $post->user->name }} on {{ $post['created_at'] }}</p>
+                                @else
+                                    <p class="text-gray-400 text-sm">Posted by [user deleted] on {{ $post['created_at'] }}</p>
+                                @endif
                             </div>
                         </div>
                         <br>
@@ -78,7 +82,7 @@
                         <br>Sorry this Thread is locked from further commenting
                     @else
                         <textarea name="newpost" class="w-full px-3 py-2 border rounded-md" placeholder="Write your post here..."></textarea>
-                        <button class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">Post</button>
+                        <button class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Post</button>
                     @endif
                     <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
                 </form>

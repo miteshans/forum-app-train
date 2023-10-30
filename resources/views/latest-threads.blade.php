@@ -24,15 +24,20 @@
             @endif
 
             <div class="max-w-3xl mx-auto bg-white p-4 rounded-md shadow-md">
-                <h1 class="text-2xl font-bold mb-4">Thread Listing</h1>
                 
                 <!-- Thread List -->
                 <ul class="space-y-4">
                     @foreach ($threads as $thread)
                         <!-- Thread -->
                         <li class="bg-gray-200 p-4 rounded-md">
-                            <div class="text-xl font-bold">Thread Title 1</div>
-                            <p class="text-gray-500">Posted by {{ $thread->user->name }} on {{ $thread['created_at'] }}</p>
+                            <div class="text-xl font-bold">{{ $thread->title }}</div>
+                            
+                            @if ($thread->user)
+                                <p class="text-gray-500">Posted by {{ $thread->user->name }} on {{ $thread['created_at'] }}</p>
+                            @else
+                                <p class="text-gray-500">Posted by [user deleted] on {{ $thread['created_at'] }}</p>
+                            @endif
+                            
                             <p class="text-gray-700 mt-2">{{ $thread['body'] }}</p>
                             <div class="mt-2">
                                 <span class="text-blue-600">{{ $thread->likes->count() }} Likes</span>
