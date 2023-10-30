@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -49,7 +50,7 @@ class User extends Authenticatable
     // Users have many Posts
     public function posts()
     {
-        return $this->hasMany(Post::class, 'userid');
+        return $this->hasMany(Post::class, 'user_id');
     }
 
     // Get users who have posted in threads in the current month
@@ -62,6 +63,15 @@ class User extends Authenticatable
             $query->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd]);
         })->take(10)->get();
 
+        //$activeUsers = User::find(1)->threads;
+        //echo $activeUsers;
+        //dd();
         return $activeUsers;
+    }
+
+    // User has many Threads
+    public function threads(): HasMany
+    {
+        return $this->hasMany(Thread::class);
     }
 }

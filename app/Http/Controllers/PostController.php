@@ -23,7 +23,7 @@ class PostController extends Controller
         
             $post = new Post();
             $post->thread_id = $tid;
-            $post->userid = $uid;
+            $post->user_id = $uid;
             $post->body = $request->newpost;
             $post->save();
 

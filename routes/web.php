@@ -30,8 +30,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
 
     $activeusers = User::activeusers();
-    $totThreads = Thread::where('userid',Auth::id())->count();
-    $totPosts = Post::where('userid',Auth::id())->count();
+    $totThreads = Thread::where('user_id',Auth::id())->count();
+    $totPosts = Post::where('user_id',Auth::id())->count();
     return view('dashboard', ['totThreads'=>$totThreads, 'totPosts'=>$totPosts, 'activeusers'=>$activeusers ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

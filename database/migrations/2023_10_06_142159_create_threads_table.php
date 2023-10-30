@@ -22,7 +22,7 @@ return new class extends Migration
             // lock threads
             $table->boolean('locked')->default(0);
             // add FK to Users
-            $table->foreignId('userid')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 

@@ -73,7 +73,7 @@ class ThreadController extends Controller
         $thread = new Thread();
         $thread->title = $request->thetitle;
         $thread->body = $request->thebody;
-        $thread->userid = $uid;
+        $thread->user_id = $uid;
         $thread->save();
 
         return redirect('add-a-thread')->with('success','Thread saved successfully!');
@@ -82,7 +82,7 @@ class ThreadController extends Controller
     public function userthreads()
     {
         $uid = Auth::id();
-        $threads = Thread::with('posts')->where('userid',$uid)->get();
+        $threads = Thread::with('posts')->where('user_id',$uid)->get();
         return view('user-threads',['threads'=>$threads]);
     }
 
