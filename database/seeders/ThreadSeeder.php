@@ -15,19 +15,19 @@ class ThreadSeeder extends Seeder
         // seed some Threads 
         \App\Models\Thread::factory()->create([
             'title' => 'Thread 1 title',
-            'body' => 'thread 1 by user 1',
+            'body' => 'thread 1',
             'userid' => 1,
         ]);
 
         \App\Models\Thread::factory()->create([
             'title' => 'Thread 2 title',
-            'body' => 'thread 2 by user 1',
+            'body' => 'thread 2',
             'userid' => 1,
         ]);
 
         \App\Models\Thread::factory()->create([
             'title' => 'Thread 3 title',
-            'body' => 'thread 3 by user 2',
+            'body' => 'thread 3',
             'userid' => 2,
         ]);
     }

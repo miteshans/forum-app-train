@@ -14,19 +14,19 @@ class PostSeeder extends Seeder
     {
          // seed some Threads 
         \App\Models\Post::factory()->create([
-            'body' => 'post 1 on thread 1 by user 1',
+            'body' => 'post 1 on thread 1',
             'thread_id' => 1,
             'userid' => 1,
         ]);
 
         \App\Models\Post::factory()->create([
-            'body' => 'post 2 on thread 1 by user 1',
+            'body' => 'post 2 on thread 1',
             'thread_id' => 1,
             'userid' => 1,
         ]);
 
         \App\Models\Post::factory()->create([
-            'body' => 'post 3 on thread 2 by user 2',
+            'body' => 'post 3 on thread 2',
             'thread_id' => 2,
             'userid' => 2,
         ]);
