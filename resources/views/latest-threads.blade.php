@@ -32,7 +32,7 @@
                         <!-- Thread -->
                         <li class="bg-gray-200 p-4 rounded-md">
                             <div class="text-xl font-bold">Thread Title 1</div>
-                            <p class="text-gray-500">Posted by ##(setup relationship)## on {{ $thread['created_at'] }}</p>
+                            <p class="text-gray-500">Posted by {{ $thread->user->name }} on {{ $thread['created_at'] }}</p>
                             <p class="text-gray-700 mt-2">{{ $thread['body'] }}</p>
                             <div class="mt-2">
                                 <span class="text-blue-600">{{ $thread->likes->count() }} Likes</span>
