@@ -17,14 +17,13 @@ class PostTest extends TestCase
          // With an authenticated user
         $user = User::factory()->create();
         $this->actingAs($user);
-        
-        // get user id
-        $userid = $user['id']; 
+        $uid = $user['id']; 
         
         // thread data
         $threadData = [
-            'thetitle' => 'Test Thread 1',
-            'thebody' => 'This is the thread body content 1.',
+            'thetitle' => 'Test Thread Feature Test',
+            'thebody' => 'can_create_post_if_authenticated_http',
+            'user_id' => $uid,
          ];
  
         // Create the Thread
@@ -33,8 +32,8 @@ class PostTest extends TestCase
         // Post Data
         $postData = [
             'threadid' => '1',
-            'user_id' => '16',
-            'newpost' => 'This is the post content.',
+            'user_id' => $uid,
+            'newpost' => 'can_create_post_if_authenticated_http',
          ];
 
         // Create the Post
@@ -42,5 +41,16 @@ class PostTest extends TestCase
 
         // Then
         $response->assertRedirect('/view-thread/1');
+    }
+
+    /** @test */
+    // Cannot create a thread if user is NOT authenticated
+    public function cannot_create_post_if_not_authenticated(): void
+    {
+        // When
+        $response = $this->post('/store-post');
+ 
+        // Then
+        $response->assertRedirect('/login');
     }
 }

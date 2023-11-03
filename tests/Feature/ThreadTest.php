@@ -12,16 +12,17 @@ class ThreadTest extends TestCase
 
     /** @test */
     // Can create a thread if user is authenticated
-    public function can_create_threads_if_authenticated(): void
+    public function can_create_threads_if_authenticated_http(): void
     {
-        
          // With an authenticated user
         $user = User::factory()->create();
         $this->actingAs($user);
- 
+        $uid= $user['id'];
+        
         $threadData = [
-            'thetitle' => 'Test Thread',
-            'thebody' => 'This is the thread body content.',
+            'thetitle' => 'Test Thread Feature Test',
+            'thebody' => 'can_create_threads_if_authenticated',
+            'user_id' => $uid,
          ];
  
         // When
