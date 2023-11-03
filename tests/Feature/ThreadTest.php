@@ -36,8 +36,13 @@ class ThreadTest extends TestCase
     // Cannot create a thread if user is NOT authenticated
     public function cannot_create_threads_if_not_authenticated(): void
     {
+        $threadData = [
+            'thetitle' => 'Test Thread Feature Test',
+            'thebody' => 'can_create_threads_if_authenticated',
+         ];
+
         // When
-        $response = $this->post('/store-thread');
+        $response = $this->post('/store-thread', $threadData);
  
         // Then
         $response->assertRedirect('/login');
