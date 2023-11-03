@@ -33,7 +33,7 @@ class ThreadTest extends TestCase
 
     /** @test */
     // Cannot create a thread if user is NOT authenticated
-    public function cannot_create_threads_ifnot_authenticated(): void
+    public function cannot_create_threads_if_not_authenticated(): void
     {
         // When
         $response = $this->post('/store-thread');

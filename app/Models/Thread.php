@@ -12,6 +12,17 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Thread extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'body',
+        'user_id',
+    ];
     
     // Get all Posts for a Thread
     public function posts(): HasMany

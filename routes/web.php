@@ -64,7 +64,6 @@ Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {
 
     Route::get('/user-list', [UserController::class, 'view'])->name('user-list');
     Route::post('/user-delete', [UserController::class, 'delete'])->name('userdelete');
-
 });
 
 
