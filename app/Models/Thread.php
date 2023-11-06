@@ -51,10 +51,12 @@ class Thread extends Model
      */
     public function isLocked(Thread $thread)
     {
-        if($thread->locked==1) {
+        if($thread->locked==1) 
+        {
             return true;
         }
-        else {
+        else 
+        {
             return false;
         }
     }
