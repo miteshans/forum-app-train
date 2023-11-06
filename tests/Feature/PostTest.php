@@ -10,6 +10,8 @@ use App\Models\User;
 
 class PostTest extends TestCase
 {
+    use RefreshDatabase;
+    
      /** @test */
     // User can create a post if authenticated via http
     public function can_create_post_if_authenticated_http(): void

@@ -6,9 +6,13 @@ use App\Models\User;
 //use PHPUnit\Framework\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class ThreadTest extends TestCase
 {
+    use RefreshDatabase;
+    
     /** @test */
     //Create a thread in the database if authenticated
     public function can_create_thread_if_authenticated_db(): void

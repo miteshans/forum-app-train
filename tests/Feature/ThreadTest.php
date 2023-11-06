@@ -9,6 +9,7 @@ use App\Models\User;
 
 class ThreadTest extends TestCase
 {
+    use RefreshDatabase;
 
     /** @test */
     // Can create a thread if user is authenticated
