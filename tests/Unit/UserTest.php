@@ -55,7 +55,7 @@ class UserTest extends TestCase
              $thread = Thread::latest()->first();
              $response = $this->post(route('lockthreadstore', [$thread]));
      
-             // get the last thread created ie. it should now be locked
+             // get the last thread created ie. cannot lock thread as non-admin
              $thread = Thread::latest()->first();
              $this->assertFalse($thread->isLocked($thread));
          }
