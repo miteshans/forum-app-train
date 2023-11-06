@@ -45,5 +45,18 @@ class Thread extends Model
     {
         return $this->belongsTo(User::class);   
     }
+    
+    /**
+     * Check if Thread is Locked
+     */
+    public function isLocked(Thread $thread)
+    {
+        if($thread->locked==1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 
