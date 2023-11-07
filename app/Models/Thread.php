@@ -23,6 +23,15 @@ class Thread extends Model
         'body',
         'user_id',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'locked' => 'boolean',
+    ];
     
     // Get all Posts for a Thread
     public function posts(): HasMany
@@ -51,14 +60,7 @@ class Thread extends Model
      */
     public function isLocked(Thread $thread)
     {
-        if($thread->locked==1) 
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
+        return $thread->locked;
     }
 }
 
