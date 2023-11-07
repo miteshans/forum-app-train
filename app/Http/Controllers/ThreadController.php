@@ -82,14 +82,14 @@ class ThreadController extends Controller
     public function userthreads()
     {
         $uid = Auth::id();
-        $threads = Thread::with('posts')->where('user_id',$uid)->get();
+        $threads = Thread::with('posts')->where('user_id',$uid)->orderBy('created_at', 'desc')->get();
         return view('user-threads',['threads'=>$threads]);
     }
 
     public function latestthreads()
     {
         // get latest threads
-        $threads = Thread::with('posts')->get();
+        $threads = Thread::with('posts')->orderBy('created_at', 'desc')->get();
         return view('latest-threads', ['threads'=>$threads]);
     }
 }

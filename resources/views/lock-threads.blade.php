@@ -44,14 +44,14 @@
                         @foreach ($threads as $thread)
                             <tbody class="divide-y divide-gray-200">
                                 <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $thread['title'] }}</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><a href="/view-thread/{{ $thread['id'] }}">{{ $thread['title'] }}</a> <span style="color:#ccc;">(created {{ \Carbon\Carbon::parse($thread['created_at'])->diffForHumans() }})</span></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                                     <form action="{{ route('lockthreadstore', [$thread]) }}" method="POST">
                                         @csrf
                                         @if ($thread->locked == 1)
-                                            <button type="submit">UNLOCK</button>
+                                            <button class="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="submit">UNLOCK</button>
                                         @else
-                                            <button type="submit">Lock Thread</button>
+                                            <button class="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="submit">Lock Thread</button>
                                         @endif
                                     </form>
                                 </td>

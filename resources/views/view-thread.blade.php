@@ -26,7 +26,7 @@
             <div class="max-w-3xl mx-auto bg-white p-4 rounded-md shadow-md">
                 <h1 class="text-2xl font-bold mb-4">{{ $thread['title'] }}</h1>
                 
-                <p class="text-gray-400 text-sm mb-4">Thread Created on {{ $thread['created_at'] }}</p>
+                <p class="text-gray-400 text-sm mb-4">Thread Created {{ \Carbon\Carbon::parse($thread['created_at'])->diffForHumans() }}</p>
 
                 <div class="mb-6">
                 {{ $thread->body }}
@@ -63,9 +63,9 @@
                                     </div>
                                 </div>
                                 @if ($post->user)
-                                    <p class="text-gray-400 text-sm">Posted by {{ $post->user->name }} on {{ $post['created_at'] }}</p>
+                                    <p class="text-gray-400 text-sm">Posted by {{ $post->user->name }} {{ \Carbon\Carbon::parse($post['created_at'])->diffForHumans() }}</p>
                                 @else
-                                    <p class="text-gray-400 text-sm">Posted by [user deleted] on {{ $post['created_at'] }}</p>
+                                    <p class="text-gray-400 text-sm">Posted by [user deleted] {{ \Carbon\Carbon::parse($post['created_at'])->diffForHumans() }}</p>
                                 @endif
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                         <br>Sorry this Thread is locked from further commenting
                     @else
                         <textarea name="newpost" class="w-full px-3 py-2 border rounded-md" placeholder="Write your post here..."></textarea>
-                        <button class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Post</button>
+                        <button class="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Post</button>
                     @endif
                     <input type="hidden" name="threadid" value="{{ $thread['id'] }}">
                 </form>
