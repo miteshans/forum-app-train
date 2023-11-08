@@ -58,7 +58,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // If Admin, you can lock threads and delete users
-Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {
+Route::prefix('adminX')->middleware(['auth','isadmin'])->group(function() {
+
     Route::get('/lock-threads', [ThreadController::class, 'lockthreads'])->name('lock-threads');
     Route::post('/lock-thread-store/{thread}', [ThreadController::class, 'lockthreadstore'])->name('lockthreadstore');
 
@@ -66,5 +67,13 @@ Route::prefix('admin')->middleware(['auth','isadmin'])->group(function() {
     Route::post('/user-delete', [UserController::class, 'delete'])->name('userdelete');
 });
 
+// Use Controller to route out
+use App\Http\Controllers\AdminController;
+Route::controller(AdminController::class)
+    ->prefix('admin')
+    ->group(function() {
+        Route::get('/', 'index')->name('admin.index');
+        Route::get('/lock', 'lock')->name('admin.lock');
+});
 
 require __DIR__.'/auth.php';
