@@ -21,8 +21,8 @@ class ThreadTest extends TestCase
         $uid= $user['id'];
         
         $threadData = [
-            'thetitle' => 'Test Thread Feature Test',
-            'thebody' => 'can_create_threads_if_authenticated',
+            'title' => 'Test Thread Feature Test',
+            'body' => 'can_create_threads_if_authenticated',
             'user_id' => $uid,
          ];
  
@@ -38,8 +38,8 @@ class ThreadTest extends TestCase
     public function cannot_create_threads_if_not_authenticated(): void
     {
         $threadData = [
-            'thetitle' => 'Test Thread Feature Test',
-            'thebody' => 'can_create_threads_if_authenticated',
+            'title' => 'Test Thread Feature Test',
+            'body' => 'can_create_threads_if_authenticated',
          ];
 
         // When

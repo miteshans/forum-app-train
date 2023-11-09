@@ -23,8 +23,8 @@ class PostTest extends TestCase
         
         // thread data
         $threadData = [
-            'thetitle' => 'Test Thread Feature Test',
-            'thebody' => 'can_create_post_if_authenticated_http',
+            'title' => 'Test Thread Feature Test',
+            'body' => 'can_create_post_if_authenticated_http',
             'user_id' => $uid,
          ];
  

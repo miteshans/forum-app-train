@@ -27,13 +27,13 @@
             @csrf
                 <br>
                 <div class="relative">
-                    <input type="text" name="thetitle" id="thetitle" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Thread Title">
+                    <input type="text" name="title" id="title" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Thread Title">
                 </div>
                 <br>
                 <div>
                     <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">Body of Thread, what do you want to talk about?</label>
                     <div class="mt-2">
-                        <textarea rows="4" name="thebody" id="thebody" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">&nbsp;</textarea>
+                        <textarea rows="4" name="body" id="body" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">&nbsp;</textarea>
                     </div>
                 </div>
                 <br>
