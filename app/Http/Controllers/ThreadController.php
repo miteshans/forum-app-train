@@ -63,7 +63,7 @@ class ThreadController extends Controller
     public function store(Request $request)
     {
         // validate input
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required|max:100',
             'body' => 'required|max:2000',
         ]);
